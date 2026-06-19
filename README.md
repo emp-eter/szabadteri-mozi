@@ -2,6 +2,8 @@
 
 Single-page Hungarian marketing landing page for the Cinema Center **"Szabadtéri Mozi"** (open-air cinema) service, 2026 summer season. Built with **React + Vite**, recreated pixel-faithfully from the hi-fi design handoff in `design_handoff_szabadteri_mozi/`.
 
+🔗 **Live:** https://emp-eter.github.io/szabadteri-mozi/
+
 ## Getting started
 
 ```bash
