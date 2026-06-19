@@ -2,9 +2,12 @@ import catZenes from './assets/cat_zenes.png'
 import catCsaladi from './assets/cat_csaladi.png'
 import catBlockbuster from './assets/cat_blockbuster.png'
 import catKlasszikus from './assets/cat_klasszikus.png'
-
-// Base-aware URL helper for assets served from /public (files added later).
-const pub = (p) => `${import.meta.env.BASE_URL}${p}`
+import venue1 from './assets/venue1.png'
+import venue2 from './assets/venue2.png'
+import venue3 from './assets/venue3.png'
+import venue4 from './assets/venue4.png'
+import venue5 from './assets/venue5.png'
+import venue6 from './assets/venue6.png'
 
 // Hero clapperboard — featured next screening
 export const featured = {
@@ -16,14 +19,14 @@ export const featured = {
   tags: 'Kvíz · Fotófal · Dekoráció · Piknik',
 }
 
-// References gallery — "Hol jártunk már" (venue photos live in /public/venues)
+// References gallery — "Hol jártunk már"
 export const venues = [
-  { src: pub('venues/venue1.png'), cap: 'STRAND Fesztivál – Zamárdi', rot: -2 },
-  { src: pub('venues/venue2.png'), cap: 'Gyulai Várfürdő', rot: 1.5 },
-  { src: pub('venues/venue3.png'), cap: 'Bolyki Pincészet és Szőlőbirtok – Eger', rot: -1.2 },
-  { src: pub('venues/venue4.png'), cap: 'Települési eseményeken garantált a teltház', rot: 1.8 },
-  { src: pub('venues/venue5.png'), cap: 'Belvárosi környezetben is népszerű program', rot: -1.5 },
-  { src: pub('venues/venue6.png'), cap: 'Eszterházy kastély – Fertőd', rot: 1.2 },
+  { src: venue1, cap: 'STRAND Fesztivál – Zamárdi', rot: -2 },
+  { src: venue2, cap: 'Gyulai Várfürdő', rot: 1.5 },
+  { src: venue3, cap: 'Bolyki Pincészet és Szőlőbirtok – Eger', rot: -1.2 },
+  { src: venue4, cap: 'Települési eseményeken garantált a teltház', rot: 1.8 },
+  { src: venue5, cap: 'Belvárosi környezetben is népszerű program', rot: -1.5 },
+  { src: venue6, cap: 'Eszterházy kastély – Fertőd', rot: 1.2 },
 ]
 
 // "Mit tartalmaz?" — technical parameters list
