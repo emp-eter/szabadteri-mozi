@@ -23,10 +23,8 @@ export default function Contact() {
 
         <m.div className="contact__card" variants={fadeUp}>
           <span className="contact__card-label">Kapcsolattartó</span>
-          <span className="contact__name">Víg-Kovács Ivett</span>
-          <a href="tel:+36304636324" className="contact__phone">
-            +36 30 463 6324
-          </a>
+          <span className="contact__name">Példa Név</span>
+          <span className="contact__phone">Példa Telefonszám</span>
         </m.div>
 
         <m.div className="contact__links" variants={fadeUp}>
