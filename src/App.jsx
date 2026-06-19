@@ -6,7 +6,6 @@ import WhatsIncluded from './components/WhatsIncluded.jsx'
 import Packages from './components/Packages.jsx'
 import Catalog from './components/Catalog.jsx'
 import Contact from './components/Contact.jsx'
-import FilmStrip from './components/FilmStrip.jsx'
 
 export default function App() {
   const reduce = useReducedMotion()
@@ -19,10 +18,8 @@ export default function App() {
       <Hero />
       <Intro />
       <References />
-      <FilmStrip />
       <WhatsIncluded />
       <Packages />
-      <FilmStrip />
       <Catalog />
       <Contact />
     </div>
