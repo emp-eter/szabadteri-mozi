@@ -760,6 +760,7 @@ body {
 }
 .catalog__gallery img {
   width: 100%;
+  height: auto;
   display: block;
 }
 .catalog__films {

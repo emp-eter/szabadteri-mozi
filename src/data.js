@@ -1,13 +1,13 @@
-import catZenes from './assets/cat_zenes.png'
-import catCsaladi from './assets/cat_csaladi.png'
-import catBlockbuster from './assets/cat_blockbuster.png'
-import catKlasszikus from './assets/cat_klasszikus.png'
-import venue1 from './assets/venue1.png'
-import venue2 from './assets/venue2.png'
-import venue3 from './assets/venue3.png'
-import venue4 from './assets/venue4.png'
-import venue5 from './assets/venue5.png'
-import venue6 from './assets/venue6.png'
+import catZenes from './assets/cat_zenes.webp'
+import catCsaladi from './assets/cat_csaladi.webp'
+import catBlockbuster from './assets/cat_blockbuster.webp'
+import catKlasszikus from './assets/cat_klasszikus.webp'
+import venue1 from './assets/venue1.webp'
+import venue2 from './assets/venue2.webp'
+import venue3 from './assets/venue3.webp'
+import venue4 from './assets/venue4.webp'
+import venue5 from './assets/venue5.webp'
+import venue6 from './assets/venue6.webp'
 
 // Hero clapperboard — featured next screening
 export const featured = {

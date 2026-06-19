@@ -33,6 +33,7 @@ export default function References() {
                 src={v.src}
                 alt={v.cap}
                 loading="lazy"
+                decoding="async"
                 onError={() => setFailed((f) => ({ ...f, [v.cap]: true }))}
               />
             )}

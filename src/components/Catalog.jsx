@@ -28,7 +28,13 @@ export default function Catalog() {
         </div>
 
         <div className="catalog__gallery">
-          <img src={active.img} alt={`${active.label} – filmposzterek`} />
+          <img
+            src={active.img}
+            alt={`${active.label} – filmposzterek`}
+            width={1071}
+            height={1182}
+            decoding="async"
+          />
         </div>
 
         <div className="catalog__films">
