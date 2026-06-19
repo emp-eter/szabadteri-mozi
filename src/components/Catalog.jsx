@@ -66,10 +66,6 @@ export default function Catalog() {
             </m.span>
           ))}
         </m.div>
-
-        <p className="catalog__note">
-          A teljes filmkínálatot a mellékelt dokumentumban találja.
-        </p>
       </div>
     </section>
   )
