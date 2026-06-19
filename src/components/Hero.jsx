@@ -29,11 +29,6 @@ export default function Hero() {
         initial={lead}
         animate="show"
       >
-        <m.div className="badge" variants={fadeUp}>
-          <span className="badge__dot" />
-          <span className="badge__text">2026 Nyarán</span>
-        </m.div>
-
         <m.h1 className="hero__title" variants={heroTitle}>
           Szabadtéri
           <br />

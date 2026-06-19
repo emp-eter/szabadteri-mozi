@@ -82,32 +82,6 @@ body {
   text-align: center;
 }
 
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 20px;
-  border: 1px solid rgba(246, 182, 46, 0.5);
-  border-radius: 100px;
-  background: rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(4px);
-  margin-bottom: 26px;
-}
-.badge__dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--gold);
-  box-shadow: 0 0 10px var(--gold);
-}
-.badge__text {
-  font-size: 13px;
-  letter-spacing: 3px;
-  font-weight: 600;
-  color: #ffe3a8;
-  text-transform: uppercase;
-}
-
 .hero__title {
   font-family: 'Luckiest Guy', cursive;
   font-size: clamp(56px, 11vw, 138px);
@@ -185,28 +159,28 @@ body {
 /* the board carries the hand-drawn wobble filter + tilt */
 .clap__board {
   width: 100%;
-  max-width: 600px;
+  max-width: 680px;
   filter: url(#clapRough);
   background: var(--slate);
-  border: 7px solid var(--chalk);
-  border-radius: 18px;
-  box-shadow: 8px 12px 0 rgba(0, 0, 0, 0.32);
+  border: 8px solid var(--chalk);
+  border-radius: 20px;
+  box-shadow: 9px 13px 0 rgba(0, 0, 0, 0.32);
 }
 
 /* integrated top clap stripes */
 .clap__stripes {
-  height: 58px;
-  background: repeating-linear-gradient(108deg, var(--chalk) 0 34px, var(--clap-dark) 34px 68px);
-  border-bottom: 7px solid var(--chalk);
-  border-radius: 11px 11px 0 0;
+  height: 66px;
+  background: repeating-linear-gradient(108deg, var(--chalk) 0 38px, var(--clap-dark) 38px 76px);
+  border-bottom: 8px solid var(--chalk);
+  border-radius: 12px 12px 0 0;
 }
 
 .clap__body {
-  padding: 28px 36px 32px;
+  padding: 32px 42px 36px;
 }
 .clap__title {
   font-family: 'Luckiest Guy', cursive;
-  font-size: 58px;
+  font-size: 66px;
   line-height: 0.92;
   color: var(--gold);
   -webkit-text-stroke: 2px var(--clap-dark);
@@ -219,10 +193,10 @@ body {
   height: 6px;
   background: var(--chalk);
   border-radius: 6px;
-  margin: 18px 0;
+  margin: 20px 0;
 }
 .clap__line--first {
-  margin: 20px 0 18px;
+  margin: 22px 0 20px;
 }
 
 .clap__meta {
@@ -233,40 +207,40 @@ body {
   flex: 1.2;
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  padding-right: 22px;
+  gap: 6px;
+  padding-right: 26px;
 }
 .clap__date {
   font-family: 'Permanent Marker', cursive;
-  font-size: 30px;
+  font-size: 34px;
   color: var(--chalk);
   text-transform: uppercase;
   line-height: 1.05;
 }
 .clap__day {
   font-family: 'Permanent Marker', cursive;
-  font-size: 24px;
+  font-size: 27px;
   color: var(--chalk);
   text-transform: uppercase;
   line-height: 1.05;
 }
 .clap__time {
-  font-size: 18px;
+  font-size: 20px;
   color: rgba(242, 234, 212, 0.8);
 }
 .clap__vsep {
-  width: 6px;
+  width: 7px;
   background: var(--chalk);
-  border-radius: 6px;
+  border-radius: 7px;
 }
 .clap__free {
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-left: 22px;
+  padding-left: 26px;
   font-family: 'Permanent Marker', cursive;
-  font-size: 26px;
+  font-size: 30px;
   color: var(--cyan);
   text-transform: uppercase;
   text-align: center;
@@ -274,14 +248,14 @@ body {
 }
 .clap__location {
   font-family: 'Permanent Marker', cursive;
-  font-size: 30px;
+  font-size: 34px;
   color: var(--chalk);
   text-transform: uppercase;
   text-align: center;
 }
 .clap__tags {
   font-family: 'Permanent Marker', cursive;
-  font-size: 21px;
+  font-size: 23px;
   color: var(--gold);
   text-transform: uppercase;
   text-align: center;
@@ -949,15 +923,6 @@ body {
 @keyframes heroGlow {
   0%, 100% { opacity: 0.55; }
   50% { opacity: 1; }
-}
-
-/* badge dot pulse */
-.badge__dot {
-  animation: dotPulse 2.4s ease-in-out infinite;
-}
-@keyframes dotPulse {
-  0%, 100% { box-shadow: 0 0 6px #f6b62e; }
-  50% { box-shadow: 0 0 16px 2px #f6b62e; }
 }
 
 /* shimmer sweep across the primary CTA */
