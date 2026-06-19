@@ -1,42 +1,81 @@
+import { m, useReducedMotion } from 'framer-motion'
 import Starfield from './Starfield.jsx'
 import { featured } from '../data.js'
+import { fadeUp, stagger, dropIn, viewport } from '../motion.js'
+
+// Title settles to its resting -2.5deg tilt
+const heroTitle = {
+  hidden: { opacity: 0, scale: 0.85, rotate: -10 },
+  show: {
+    opacity: 1,
+    scale: 1,
+    rotate: -2.5,
+    transition: { type: 'spring', stiffness: 240, damping: 16 },
+  },
+}
 
 export default function Hero() {
+  const reduce = useReducedMotion()
+  const lead = reduce ? false : 'hidden'
+
   return (
     <section className="hero" data-screen-label="Hero">
-      <Starfield count={70} seed={7} />
+      <Starfield count={70} seed={7} shooting={2} />
       <div className="hero__fade" />
 
-      <div className="hero__inner">
-        <div className="badge">
+      <m.div
+        className="hero__inner"
+        variants={stagger(0.12)}
+        initial={lead}
+        animate="show"
+      >
+        <m.div className="badge" variants={fadeUp}>
           <span className="badge__dot" />
           <span className="badge__text">2026 Nyarán</span>
-        </div>
+        </m.div>
 
-        <h1 className="hero__title">
+        <m.h1 className="hero__title" variants={heroTitle}>
           Szabadtéri
           <br />
           Mozi
-        </h1>
-        <p className="hero__subtitle">Moziélmény a csillagok alatt</p>
+        </m.h1>
+        <m.p className="hero__subtitle" variants={fadeUp}>
+          Moziélmény a csillagok alatt
+        </m.p>
 
-        <p className="hero__lead">
+        <m.p className="hero__lead" variants={fadeUp}>
           Elvisszük Önökhöz is az igazi kertmozi élményt — komplex program minden
           technikai feltétellel, egyedi dekorációval és izgalmas kvíz játékkal.
-        </p>
+        </m.p>
 
-        <div className="hero__cta">
-          <a href="#csomagok" className="btn btn--primary">
+        <m.div className="hero__cta" variants={fadeUp}>
+          <m.a
+            href="#csomagok"
+            className="btn btn--primary"
+            whileHover={{ y: -2, scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+          >
             Csomagok megtekintése →
-          </a>
-          <a href="#kapcsolat" className="btn btn--secondary">
+          </m.a>
+          <m.a
+            href="#kapcsolat"
+            className="btn btn--secondary"
+            whileHover={{ y: -2 }}
+            whileTap={{ scale: 0.97 }}
+          >
             Ajánlatkérés
-          </a>
-        </div>
-      </div>
+          </m.a>
+        </m.div>
+      </m.div>
 
       {/* Featured screening — hand-drawn chalkboard clapperboard */}
-      <div className="clap">
+      <m.div
+        className="clap"
+        variants={dropIn}
+        initial={lead}
+        whileInView="show"
+        viewport={viewport}
+      >
         {/* hand-drawn roughen filter (subtle wobble on the whole board) */}
         <svg width="0" height="0" className="clap__filter" aria-hidden="true">
           <filter id="clapRough" x="-50%" y="-50%" width="200%" height="200%">
@@ -51,7 +90,14 @@ export default function Hero() {
           </filter>
         </svg>
 
-        <div className="clap__board">
+        <m.div
+          className="clap__board"
+          style={{ rotate: -3 }}
+          animate={reduce ? undefined : { y: [0, -7, 0] }}
+          transition={
+            reduce ? undefined : { duration: 6, repeat: Infinity, ease: 'easeInOut' }
+          }
+        >
           <div className="clap__stripes" />
 
           <div className="clap__body">
@@ -79,8 +125,8 @@ export default function Hero() {
             <div className="clap__line" />
             <div className="clap__tags">{featured.tags}</div>
           </div>
-        </div>
-      </div>
+        </m.div>
+      </m.div>
     </section>
   )
 }

@@ -1,17 +1,37 @@
+import { m } from 'framer-motion'
 import { packages, festivalSpecs } from '../data.js'
+import { fadeUp, stagger, viewport } from '../motion.js'
 
 export default function Packages() {
   return (
     <section id="csomagok" className="packages" data-screen-label="Csomagok">
       <div className="packages__inner">
-        <div className="packages__head">
+        <m.div
+          className="packages__head"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewport}
+        >
           <span className="eyebrow eyebrow--cyan">Árajánlat</span>
           <h2>Válassza ki a csomagot</h2>
-        </div>
+        </m.div>
 
-        <div className="packages__grid">
+        <m.div
+          className="packages__grid"
+          variants={stagger(0.1)}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewport}
+        >
           {packages.map((p) => (
-            <div key={p.name} className={`pkg${p.accent ? ' pkg--accent' : ''}`}>
+            <m.div
+              key={p.name}
+              className={`pkg${p.accent ? ' pkg--accent' : ''}`}
+              variants={fadeUp}
+              whileHover={{ y: -8 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 24 }}
+            >
               {p.accent && <span className="pkg__badge">Népszerű</span>}
               <div className={`pkg__name${p.accent ? ' pkg__name--accent' : ''}`}>
                 {p.name}
@@ -41,11 +61,17 @@ export default function Packages() {
                   <span className="pkg__price-vat">Ft + Áfa</span>
                 </div>
               </div>
-            </div>
+            </m.div>
           ))}
-        </div>
+        </m.div>
 
-        <div className="festival">
+        <m.div
+          className="festival"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewport}
+        >
           <div>
             <span className="festival__badge">Prémium</span>
             <h3 className="festival__title">Filmfesztivál</h3>
@@ -67,7 +93,7 @@ export default function Packages() {
             <br />
             alapján
           </div>
-        </div>
+        </m.div>
 
         <p className="packages__footnote">
           Az árak nem tartalmazzák a filmjogdíjat, amit a kiválasztott film alapján

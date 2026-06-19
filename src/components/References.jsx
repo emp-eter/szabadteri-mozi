@@ -1,14 +1,21 @@
 import { useState } from 'react'
+import { m } from 'framer-motion'
 import { venues } from '../data.js'
+import { fadeUp, stagger, polaroidIn, viewport } from '../motion.js'
 
 export default function References() {
-  // Track venue images that fail to load (e.g. before the real photos are added),
-  // so we can show a tasteful placeholder instead of a broken-image icon.
+  // Track venue images that fail to load, to show a tasteful placeholder.
   const [failed, setFailed] = useState({})
 
   return (
     <section className="references" data-screen-label="Referenciák">
-      <div className="references__head">
+      <m.div
+        className="references__head"
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={viewport}
+      >
         <span className="eyebrow eyebrow--cyan">Hol jártunk már</span>
         <p className="references__lead">
           Egy fellépő áráért komplex programot (technika, tartalom, dekoráció)
@@ -17,14 +24,23 @@ export default function References() {
           rendezvényhelyszíneken, műemléki környezetben és zenei fesztiválok
           kiegészítő helyszíneként.
         </p>
-      </div>
+      </m.div>
 
-      <div className="references__grid">
+      <m.div
+        className="references__grid"
+        variants={stagger(0.1)}
+        initial="hidden"
+        whileInView="show"
+        viewport={viewport}
+      >
         {venues.map((v) => (
-          <div
+          <m.div
             key={v.cap}
             className="polaroid"
-            style={{ transform: `rotate(${v.rot}deg)` }}
+            variants={polaroidIn}
+            custom={v.rot}
+            whileHover={{ rotate: 0, y: -6, scale: 1.03, zIndex: 1 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 22 }}
           >
             {failed[v.cap] ? (
               <div className="polaroid__placeholder">Fotó hamarosan</div>
@@ -38,9 +54,9 @@ export default function References() {
               />
             )}
             <div className="polaroid__cap">{v.cap}</div>
-          </div>
+          </m.div>
         ))}
-      </div>
+      </m.div>
     </section>
   )
 }

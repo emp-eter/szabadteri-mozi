@@ -5,7 +5,7 @@ import { useMemo } from 'react'
  * Uses a deterministic seeded PRNG so the layout is stable across renders
  * (seed 7 = hero, 13 = contact in the original design).
  */
-export default function Starfield({ count, seed = 1 }) {
+export default function Starfield({ count, seed = 1, shooting = 0 }) {
   const stars = useMemo(() => {
     let s = seed
     const rnd = () => {
@@ -37,6 +37,19 @@ export default function Starfield({ count, seed = 1 }) {
       {stars.map((style, i) => (
         <span key={i} className="star" style={style} />
       ))}
+      {shooting > 0 &&
+        Array.from({ length: shooting }, (_, i) => (
+          <span
+            key={`sh-${i}`}
+            className="shooting-star"
+            style={{
+              top: `${8 + i * 17}%`,
+              left: `${10 + i * 22}%`,
+              animationDelay: `${3 + i * 6}s`,
+              animationDuration: `${5 + i * 2}s`,
+            }}
+          />
+        ))}
     </div>
   )
 }

@@ -1,5 +1,7 @@
 import { useState } from 'react'
+import { m, AnimatePresence } from 'framer-motion'
 import { cats } from '../data.js'
+import { fadeUp, stagger, chip, viewport } from '../motion.js'
 
 export default function Catalog() {
   const [activeCat, setActiveCat] = useState(0)
@@ -8,42 +10,62 @@ export default function Catalog() {
   return (
     <section className="catalog" data-screen-label="Filmkatalógus">
       <div className="catalog__inner">
-        <div className="catalog__head">
+        <m.div
+          className="catalog__head"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewport}
+        >
           <h2>Filmkatalógus</h2>
           <p>Több mint tízezer film a kínálatban — íme néhány kedvenc</p>
-        </div>
+        </m.div>
 
         <div className="catalog__tabs">
           {cats.map((c, i) => (
-            <button
+            <m.button
               key={c.label}
               type="button"
               className={`cat-tab${i === activeCat ? ' cat-tab--active' : ''}`}
               onClick={() => setActiveCat(i)}
               aria-pressed={i === activeCat}
+              whileTap={{ scale: 0.94 }}
             >
               {c.label}
-            </button>
+            </m.button>
           ))}
         </div>
 
         <div className="catalog__gallery">
-          <img
-            src={active.img}
-            alt={`${active.label} – filmposzterek`}
-            width={1071}
-            height={1182}
-            decoding="async"
-          />
+          <AnimatePresence mode="wait" initial={false}>
+            <m.img
+              key={activeCat}
+              src={active.img}
+              alt={`${active.label} – filmposzterek`}
+              width={1071}
+              height={1182}
+              decoding="async"
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.98 }}
+              transition={{ duration: 0.35, ease: 'easeOut' }}
+            />
+          </AnimatePresence>
         </div>
 
-        <div className="catalog__films">
+        <m.div
+          className="catalog__films"
+          key={activeCat}
+          variants={stagger(0.03)}
+          initial="hidden"
+          animate="show"
+        >
           {active.films.map((f) => (
-            <span key={f} className="film-chip">
+            <m.span key={f} className="film-chip" variants={chip}>
               {f}
-            </span>
+            </m.span>
           ))}
-        </div>
+        </m.div>
 
         <p className="catalog__note">
           A teljes filmkínálatot a mellékelt dokumentumban találja.

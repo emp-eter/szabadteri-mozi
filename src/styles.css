@@ -115,7 +115,6 @@ body {
   color: var(--gold);
   -webkit-text-stroke: 2px var(--stroke-dark);
   text-shadow: 5px 7px 0 rgba(0, 0, 0, 0.32);
-  transform: rotate(-2.5deg);
   letter-spacing: 1px;
 }
 .hero__subtitle {
@@ -150,7 +149,7 @@ body {
   font-size: 15px;
   border-radius: 100px;
   text-decoration: none;
-  transition: transform 0.15s, background 0.15s;
+  transition: background 0.15s;
 }
 .btn--primary {
   background: var(--gold);
@@ -158,7 +157,6 @@ body {
   font-weight: 700;
   box-shadow: 0 10px 28px rgba(246, 182, 46, 0.35);
 }
-.btn--primary:hover { transform: translateY(-2px); }
 .btn--secondary {
   background: rgba(255, 255, 255, 0.08);
   color: #fff;
@@ -189,7 +187,6 @@ body {
   width: 100%;
   max-width: 420px;
   filter: url(#clapRough);
-  transform: rotate(-3deg);
   background: var(--slate);
   border: 5px solid var(--chalk);
   border-radius: 14px;
@@ -742,7 +739,11 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.15);
   background: transparent;
   color: rgba(255, 255, 255, 0.7);
-  transition: all 0.15s;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.cat-tab:not(.cat-tab--active):hover {
+  border-color: rgba(246, 182, 46, 0.5);
+  color: #fff;
 }
 .cat-tab--active {
   border-color: var(--gold);
@@ -750,8 +751,10 @@ body {
   color: var(--btn-text);
 }
 .catalog__gallery {
+  position: relative;
   max-width: 880px;
   margin: 0 auto;
+  aspect-ratio: 1071 / 1182;
   border-radius: 16px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -759,8 +762,11 @@ body {
   background: #1a1d33;
 }
 .catalog__gallery img {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   display: block;
 }
 .catalog__films {
@@ -899,4 +905,159 @@ body {
   .packages__grid { grid-template-columns: 1fr; }
   .pkg__desc { min-height: 0; }
   .references__grid { grid-template-columns: 1fr; max-width: 420px; }
+}
+
+/* ============================================================
+   ANIMATIONS & POLISH
+   ============================================================ */
+
+/* scroll progress bar (driven by framer-motion scaleX) */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--gold), var(--cyan));
+  box-shadow: 0 0 10px rgba(246, 182, 46, 0.5);
+  z-index: 50;
+}
+
+/* subtle film-grain texture over the whole page */
+.page::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 40;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 140px 140px;
+}
+
+/* slow warm glow pulse over the hero */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(60% 45% at 50% 8%, rgba(246, 182, 46, 0.16), transparent 70%);
+  animation: heroGlow 9s ease-in-out infinite;
+}
+@keyframes heroGlow {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+/* badge dot pulse */
+.badge__dot {
+  animation: dotPulse 2.4s ease-in-out infinite;
+}
+@keyframes dotPulse {
+  0%, 100% { box-shadow: 0 0 6px #f6b62e; }
+  50% { box-shadow: 0 0 16px 2px #f6b62e; }
+}
+
+/* shimmer sweep across the primary CTA */
+.btn--primary {
+  position: relative;
+  overflow: hidden;
+}
+.btn--primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    100deg,
+    transparent,
+    rgba(255, 255, 255, 0.55),
+    transparent
+  );
+  transform: skewX(-20deg);
+  animation: shimmer 4.5s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0%, 100% { left: -60%; }
+  18%, 82% { left: 130%; }
+}
+
+/* shooting stars in the starfield */
+.shooting-star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0;
+  animation-name: shoot;
+  animation-timing-function: ease-in;
+  animation-iteration-count: infinite;
+}
+.shooting-star::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 90px;
+  height: 1.5px;
+  transform: translateY(-50%);
+  background: linear-gradient(90deg, rgba(255, 227, 168, 0.95), transparent);
+}
+@keyframes shoot {
+  0% { opacity: 0; transform: translate(0, 0) rotate(20deg); }
+  6% { opacity: 1; }
+  16% { opacity: 0; transform: translate(240px, 96px) rotate(20deg); }
+  100% { opacity: 0; transform: translate(240px, 96px) rotate(20deg); }
+}
+
+/* festival band — soft animated gold glow */
+.festival {
+  animation: festivalGlow 5.5s ease-in-out infinite;
+}
+@keyframes festivalGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(246, 182, 46, 0); }
+  50% { box-shadow: 0 0 34px -4px rgba(246, 182, 46, 0.35); }
+}
+
+/* contact phone — gentle glow pulse */
+.contact__phone {
+  animation: phoneGlow 3s ease-in-out infinite;
+}
+@keyframes phoneGlow {
+  0%, 100% { text-shadow: 0 0 0 rgba(88, 197, 224, 0); }
+  50% { text-shadow: 0 0 16px rgba(88, 197, 224, 0.55); }
+}
+
+/* hover polish */
+.contact__links a {
+  transition: color 0.15s, border-color 0.15s;
+}
+.contact__links a:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.7);
+}
+.film-chip {
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.film-chip:hover {
+  background: rgba(246, 182, 46, 0.12);
+  border-color: rgba(246, 182, 46, 0.5);
+  color: #fff;
+}
+
+/* respect reduced-motion: stop all decorative CSS animation */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .shooting-star { display: none; }
 }
