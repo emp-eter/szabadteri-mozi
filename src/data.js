@@ -71,7 +71,7 @@ export const packages = [
     cap: 'Max. 300 fő',
     desc: 'Professzionális vetítéstechnika, airtight (csendes) vászonkerettel.',
     total: '299 900',
-    accent: true,
+    accent: false,
     rows: [
       ['Vászon', '8 m széles'],
       ['Hangtechnika', 'dB Technologies Stereo'],
