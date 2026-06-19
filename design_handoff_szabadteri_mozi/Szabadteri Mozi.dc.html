@@ -10,7 +10,7 @@
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Pacifico&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Pacifico&family=Permanent+Marker&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Poppins', sans-serif; background: #11152a; }
@@ -23,7 +23,7 @@
 <div style="background: #11152a; overflow: hidden; width: 100%;">
 
   <!-- ============ HERO ============ -->
-  <section data-screen-label="Hero" style="position: relative; background: radial-gradient(120% 90% at 50% 0%, #9d1b3a 0%, #7a1632 28%, #3a2747 62%, #181c30 100%); padding: 0; overflow: hidden;">
+  <section data-screen-label="Hero" style="position: relative; background: radial-gradient(120% 90% at 50% 0%, #9d1b3a 0%, #7a1632 28%, #3a2747 62%, #181c30 100%); padding: 0;">
     <!-- starfield -->
     <div style="position: absolute; inset: 0; pointer-events: none; opacity: .9;">{{ stars }}</div>
     <div style="position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, transparent 60%, #181c30 100%);"></div>
@@ -37,7 +37,7 @@
       <h1 style="font-family: 'Luckiest Guy', cursive; font-size: clamp(56px, 11vw, 138px); line-height: .92; color: #f6b62e; -webkit-text-stroke: 2px #3a1020; text-shadow: 5px 7px 0 rgba(0,0,0,.32); transform: rotate(-2.5deg); letter-spacing: 1px;">Szabadtéri<br>Mozi</h1>
       <p style="font-family: 'Pacifico', cursive; font-size: clamp(22px, 4vw, 40px); color: #ffffff; margin-top: 26px; text-shadow: 0 3px 14px rgba(0,0,0,.5);">Moziélmény a csillagok alatt</p>
 
-      <p style="max-width: 620px; margin: 26px auto 0; font-size: clamp(15px, 2.1vw, 18px); line-height: 1.6; color: rgba(255,255,255,.85); font-weight: 300;">Elvisszük Önökhöz is az igazi kertmozi élményt — komplex program minden technikai feltétellel, egyedi dekorációval és izgalmas kvíz játékkal.</p>
+      <p style="max-width: 620px; margin: 26px auto 0; font-size: clamp(15px, 2.1vw, 18px); line-height: 1.6; color: rgba(255,255,255,.85); font-weight: 300;">Elvisszük Önökhöz is az igazi kertmozi élményt - komplex program minden technikai feltétellel, egyedi dekorációval és izgalmas kvíz játékkal.</p>
 
       <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 36px;">
         <a href="#csomagok" style="display: inline-flex; align-items: center; gap: 8px; padding: 15px 30px; background: #f6b62e; color: #2a1020; font-weight: 700; font-size: 15px; border-radius: 100px; text-decoration: none; box-shadow: 0 10px 28px rgba(246,182,46,.35); transition: transform .15s;" style-hover="transform: translateY(-2px);">Csomagok megtekintése →</a>
@@ -46,28 +46,38 @@
     </div>
 
     <!-- featured event clapperboard card -->
-    <div style="position: relative; max-width: 920px; margin: -40px auto 0; padding: 0 24px; transform: translateY(40px);">
-      <div style="background: linear-gradient(150deg, #15151a 0%, #0c0c10 100%); border-radius: 18px; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 30px 70px rgba(0,0,0,.55); overflow: hidden;">
-        <!-- clap stripes -->
-        <div style="height: 32px; background: repeating-linear-gradient(-58deg, #f4f4f4 0 26px, #111114 26px 52px);"></div>
-        <div style="padding: 30px 34px 34px; display: grid; grid-template-columns: 1fr; gap: 22px;">
-          <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
-            <span style="font-size: 11px; letter-spacing: 3px; font-weight: 700; color: #58c5e0; text-transform: uppercase;">Következő vetítés</span>
-            <span style="height: 1px; flex: 1; min-width: 30px; background: rgba(255,255,255,.12);"></span>
+    <div style="position: relative; max-width: 760px; margin: 24px auto 0; padding: 0 24px 96px;">
+      <div style="transform: rotate(-1.4deg);">
+
+        <!-- TOP CLAP STICK (open, hinged at right) -->
+        <div style="position: relative; z-index: 2; margin: 0 6px -10px 2px; transform-origin: right bottom; transform: rotate(-5deg);">
+          <div style="height: 58px; border: 5px solid #f2ead4; border-radius: 12px 12px 4px 4px; background: repeating-linear-gradient(116deg, #16161a 0 30px, #f2ead4 30px 60px); box-shadow: 5px 7px 0 rgba(0,0,0,.28);"></div>
+          <!-- hinge bolt -->
+          <div style="position: absolute; right: -4px; bottom: -9px; width: 22px; height: 22px; border-radius: 50%; background: #f2ead4; border: 5px solid #16161a; box-shadow: 3px 4px 0 rgba(0,0,0,.25);"></div>
+        </div>
+
+        <!-- BOARD (chalk slate) -->
+        <div style="position: relative; background: #18181d; border: 5px solid #f2ead4; border-radius: 16px; padding: 26px 32px 30px; box-shadow: 6px 9px 0 rgba(0,0,0,.3);">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 14px;">
+            <span style="font-family: 'Permanent Marker', cursive; font-size: 15px; letter-spacing: 1px; color: #58c5e0; transform: rotate(-1deg);">Következő vetítés</span>
+            <span style="height: 3px; flex: 1; background: rgba(242,234,212,.85); border-radius: 3px;"></span>
           </div>
-          <h2 style="font-family: 'Luckiest Guy', cursive; font-size: clamp(34px, 6vw, 58px); color: #f6b62e; line-height: .95; -webkit-text-stroke: 1px #3a1020;">Avatar: Tűz és Hamu</h2>
-          <div style="display: flex; gap: 16px 48px; flex-wrap: wrap; align-items: flex-end;">
-            <div style="display: flex; flex-direction: column; gap: 2px;">
-              <span style="font-size: 11px; letter-spacing: 2px; color: rgba(255,255,255,.45); text-transform: uppercase;">Időpont</span>
-              <span style="font-size: 20px; font-weight: 700; color: #fff;">Szeptember 15. · Szombat</span>
-              <span style="font-size: 14px; color: rgba(255,255,255,.6);">20:00 óra · sötétedéskor</span>
+
+          <h2 style="font-family: 'Luckiest Guy', cursive; font-size: clamp(36px, 7vw, 62px); color: #f6b62e; line-height: .92; -webkit-text-stroke: 2px #16161a; text-shadow: 3px 4px 0 rgba(0,0,0,.4); transform: rotate(-1.2deg);">Avatar:<br>Tűz és Hamu</h2>
+
+          <div style="height: 3px; background: rgba(242,234,212,.85); border-radius: 3px; margin: 22px 0 18px;"></div>
+
+          <div style="display: flex; gap: 18px 32px; flex-wrap: wrap; align-items: flex-end; justify-content: space-between;">
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <span style="font-family: 'Permanent Marker', cursive; font-size: 20px; color: #f2ead4; line-height: 1.3; white-space: nowrap;">Szeptember 15. · Szombat</span>
+              <span style="font-family: 'Permanent Marker', cursive; font-size: 15px; color: rgba(242,234,212,.7); line-height: 1.2; white-space: nowrap;">20.00 óra · sötétedéskor</span>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 2px;">
-              <span style="font-size: 11px; letter-spacing: 2px; color: rgba(255,255,255,.45); text-transform: uppercase;">Belépés</span>
-              <span style="font-family: 'Luckiest Guy', cursive; font-size: 26px; color: #58c5e0;">Ingyenes!</span>
-            </div>
+            <div style="font-family: 'Luckiest Guy', cursive; font-size: clamp(22px, 4vw, 30px); color: #58c5e0; transform: rotate(1.5deg); -webkit-text-stroke: 1px #16161a; text-shadow: 2px 3px 0 rgba(0,0,0,.35); white-space: nowrap;">A rendezvény<br>ingyenes!</div>
           </div>
-          <div style="display: flex; gap: 8px; flex-wrap: wrap; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.08);">{{ eventTags }}</div>
+
+          <div style="height: 3px; background: rgba(242,234,212,.85); border-radius: 3px; margin: 18px 0 16px;"></div>
+
+          <div style="font-family: 'Permanent Marker', cursive; font-size: 18px; letter-spacing: 1px; color: #f6b62e; transform: rotate(-.6deg);">Kvíz · Fotófal · Dekoráció · Piknik</div>
         </div>
       </div>
     </div>
@@ -78,15 +88,21 @@
     <div style="max-width: 880px; margin: 0 auto; text-align: center;">
       <span style="font-size: 12px; letter-spacing: 4px; font-weight: 600; color: #f6b62e; text-transform: uppercase;">Egy teljesen új program</span>
       <p style="font-size: clamp(22px, 3.6vw, 34px); line-height: 1.45; color: #fff; font-weight: 400; margin-top: 26px;">Egy egész estés eseményt kínálunk Önöknek. Egy <span style="color: #58c5e0; font-weight: 600;">szuper filmet</span>, amit a katalógusból választhatnak ki, felejthetetlen <span style="color: #e8466a; font-weight: 600;">kertmozi élményt</span> a csillagok alatt, egyedi <span style="color: #f6b62e; font-weight: 600;">dekorációs elemeket</span> és minden ehhez szükséges <span style="color: #e8466a; font-weight: 600;">technikai eszközt</span>.</p>
-      <p style="font-size: 17px; color: rgba(255,255,255,.55); margin-top: 22px; font-weight: 300;">Önnek csak fogadni kell a vendégeket — a többi a mi dolgunk.</p>
+      <p style="font-size: 17px; color: rgba(255,255,255,.55); margin-top: 22px; font-weight: 300;">Önnek csak fogadni kell a vendégeket - a többi a mi dolgunk.</p>
     </div>
+  </section>
 
-    <!-- photo gallery -->
-    <div style="max-width: 1080px; margin: 60px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">{{ photos }}</div>
+  <!-- ============ REFERENCES GALLERY ============ -->
+  <section data-screen-label="Referenciák" style="background: linear-gradient(180deg, #15192c 0%, #14182b 100%); padding: 30px 32px 90px;">
+    <div style="max-width: 900px; margin: 0 auto 18px; text-align: center;">
+      <span style="font-size: 12px; letter-spacing: 4px; font-weight: 600; color: #58c5e0; text-transform: uppercase;">Hol jártunk már</span>
+      <p style="font-size: clamp(16px, 2.2vw, 19px); line-height: 1.6; color: rgba(255,255,255,.78); margin-top: 18px; font-weight: 300;">Egy fellépő áráért komplex programot (technika, tartalom, dekoráció) kínálunk, mely minden helyszínen jól alkalmazható. Települési napokon, belvárosban, strandokon, szállodákban, borászatoknál és rendezvényhelyszíneken, műemléki környezetben és zenei fesztiválok kiegészítő helyszíneként.</p>
+    </div>
+    <div style="max-width: 1080px; margin: 44px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px 20px;">{{ photos }}</div>
   </section>
 
   <!-- ============ WHAT'S INCLUDED ============ -->
-  <section data-screen-label="Mit tartalmaz" style="background: linear-gradient(180deg, #15192c 0%, #11152a 100%); padding: 90px 32px;">
+  <section data-screen-label="Mit tartalmaz" style="background: linear-gradient(180deg, #14182b 0%, #11152a 100%); padding: 90px 32px;">
     <div style="max-width: 1080px; margin: 0 auto;">
       <div style="text-align: center; margin-bottom: 56px;">
         <h2 style="font-family: 'Luckiest Guy', cursive; font-size: clamp(34px, 6vw, 56px); color: #fff;">Mit tartalmaz?</h2>
@@ -136,12 +152,13 @@
     <div style="max-width: 1080px; margin: 0 auto;">
       <div style="text-align: center; margin-bottom: 16px;">
         <h2 style="font-family: 'Luckiest Guy', cursive; font-size: clamp(34px, 6vw, 56px); color: #fff;">Filmkatalógus</h2>
-        <p style="color: rgba(255,255,255,.5); margin-top: 10px; font-size: 16px;">Több mint tízezer film a kínálatban — íme néhány kedvenc</p>
+        <p style="color: rgba(255,255,255,.5); margin-top: 10px; font-size: 16px;">Több mint tízezer film a kínálatban - íme néhány kedvenc</p>
       </div>
 
-      <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 34px 0 40px;">{{ catTabs }}</div>
-      <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; min-height: 180px;">{{ catFilms }}</div>
-      <p style="text-align: center; margin-top: 40px; font-size: 14px; color: rgba(255,255,255,.4); font-style: italic;">A teljes filmkínálatot a mellékelt dokumentumban találja.</p>
+      <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 34px 0 34px;">{{ catTabs }}</div>
+      <div style="max-width: 880px; margin: 0 auto;">{{ catGallery }}</div>
+      <div style="max-width: 880px; margin: 24px auto 0; display: flex; flex-wrap: wrap; gap: 9px; justify-content: center;">{{ catFilms }}</div>
+      <p style="text-align: center; margin-top: 34px; font-size: 14px; color: rgba(255,255,255,.4); font-style: italic;">A teljes filmkínálatot a mellékelt dokumentumban találja.</p>
     </div>
   </section>
 
@@ -202,26 +219,22 @@ class Component extends DCLogic {
   renderVals() {
     const gold = '#f6b62e', cyan = '#58c5e0', red = '#e8466a';
 
-    const eventTags = ['Kvíz', 'Fotófal', 'Dekoráció', 'Piknik'].map((t, i) =>
-      React.createElement('span', { key: i, style: {
-        padding: '6px 12px', fontSize: '12px', fontWeight: 500,
-        color: 'rgba(255,255,255,.8)', background: 'rgba(255,255,255,.07)',
-        border: '1px solid rgba(255,255,255,.12)', borderRadius: '100px'
-      } }, t));
-
     const photoData = [
-      { src: 'assets/photo1.png', cap: 'Belvárosi vetítés' },
-      { src: 'assets/photo2.png', cap: 'Esti kertmozi' },
-      { src: 'assets/photo3.png', cap: 'Vízparti élmény' }
+      { src: 'assets/venue1.png', cap: 'STRAND Fesztivál - Zamárdi' },
+      { src: 'assets/venue2.png', cap: 'Gyulai Várfürdő' },
+      { src: 'assets/venue3.png', cap: 'Bolyki Pincészet és Szőlőbirtok - Eger' },
+      { src: 'assets/venue4.png', cap: 'Települési eseményeken garantált a teltház' },
+      { src: 'assets/venue5.png', cap: 'Belvárosi környezetben is népszerű program' },
+      { src: 'assets/venue6.png', cap: 'Eszterházy kastély - Fertőd' }
     ];
-    const rots = [-2.5, 1.5, -1];
+    const rots = [-2, 1.5, -1.2, 1.8, -1.5, 1.2];
     const photos = photoData.map((p, i) =>
       React.createElement('div', { key: i, style: {
-        background: '#fff', padding: '10px 10px 16px', borderRadius: '4px',
-        boxShadow: '0 20px 40px rgba(0,0,0,.45)', transform: `rotate(${rots[i]}deg)`
+        background: '#fff', padding: '9px 9px 14px', borderRadius: '4px',
+        boxShadow: '0 18px 38px rgba(0,0,0,.45)', transform: `rotate(${rots[i]}deg)`
       } },
-        React.createElement('img', { src: p.src, style: { width: '100%', height: '210px', objectFit: 'cover', borderRadius: '2px', display: 'block' } }),
-        React.createElement('div', { style: { fontFamily: "'Pacifico', cursive", fontSize: '16px', color: '#2a1020', textAlign: 'center', marginTop: '10px' } }, p.cap)
+        React.createElement('img', { src: p.src, style: { width: '100%', height: '180px', objectFit: 'cover', borderRadius: '2px', display: 'block' } }),
+        React.createElement('div', { style: { fontFamily: "'Pacifico', cursive", fontSize: '15px', color: '#2a1020', textAlign: 'center', marginTop: '9px', lineHeight: '1.25', minHeight: '38px', display: 'flex', alignItems: 'center', justifyContent: 'center' } }, p.cap)
       ));
 
     const tech = [
@@ -291,7 +304,7 @@ class Component extends DCLogic {
       ['Vászon', '17 m széles (kiegészítők, kompresszorok)'],
       ['Hangtechnika', 'Line Array irányított hangrendszer'],
       ['Projektor', 'Nagyteljesítményű digitális mozivetítő'],
-      ['Személyzet', '4–5 fő']
+      ['Személyzet', '4-5 fő']
     ];
     const festivalSpecs = fest.map((f, i) =>
       React.createElement('div', { key: i, style: { display: 'flex', gap: '14px', alignItems: 'baseline', paddingBottom: '10px', borderBottom: i < fest.length - 1 ? '1px solid rgba(255,255,255,.1)' : 'none' } },
@@ -300,10 +313,10 @@ class Component extends DCLogic {
       ));
 
     const cats = [
-      { label: 'Zenés filmek', films: ['A legnagyobb showman', 'Bohém Rapszódia', 'Chicago', 'Csillag születik', 'Elvis', 'Flashdance', 'Grease', 'I wanna dance with somebody', 'Magyar menyegző', 'Mamma Mia 1–2.', 'Michael', 'Tina', 'Tökéletes hang', 'Wicked'] },
-      { label: 'Családi filmek', films: ['A Super Mario film', 'Agymanók 2.', 'Az oroszlánkirály', 'Csizmás a kandúr', 'Garfield', 'Gru 4.', 'Képzeletbeli barátok', 'Kis kedvencek titkos élete', 'Kung Fu Panda 4.', 'Mancsőrjárat', 'Minyonok', 'Minecraft Film', 'Mufasa', 'Trollok', 'Wonka', 'Spongyabob', 'Lilo és Stitch', 'Zootropolis 2.'] },
-      { label: 'Blockbuster', films: ['Avatar', 'Bad Boys 4.', 'Barbie', 'Baywatch', 'Dűne 1–2.', 'Gyűrűk ura', 'Jurassic World', 'Halálos iramban', 'Harry Potter', 'Marvel filmek', 'Mission Impossible', 'Star Wars', 'Top Gun: Maverick', 'Transformers', 'Oppenheimer', 'Uncharted', 'F1', 'Anakonda', 'Legénybúcsú', 'Szenvedélyes nők'] },
-      { label: 'Klasszikusok', films: ['Cápa', 'Cinema Paradiso', 'Dirty Dancing', 'E.T.', 'Indiana Jones', 'Ponyvaregény', 'Star Wars', 'Terminátor', 'Vissza a jövőbe', 'Volt egyszer egy vadnyugat'] }
+      { label: 'Zenés filmek', img: 'assets/cat_zenes.png', films: ['A legnagyobb showman', 'Bohém Rapszódia', 'Chicago', 'Csillag születik', 'Elvis', 'Flashdance', 'Grease', 'I wanna dance with somebody', 'Magyar menyegző', 'Mamma Mia 1-2.', 'Michael', 'Tina', 'Tökéletes hang', 'Wicked'] },
+      { label: 'Családi filmek', img: 'assets/cat_csaladi.png', films: ['A Super Mario film', 'Agymanók 2.', 'Az oroszlánkirály', 'Csizmás a kandúr', 'Garfield', 'Gru 4.', 'Képzeletbeli barátok', 'Kis kedvencek titkos élete', 'Kung Fu Panda 4.', 'Mancsőrjárat', 'Minyonok', 'Minecraft Film', 'Mufasa', 'Trollok', 'Wonka', 'Spongyabob', 'Lilo és Stitch', 'Zootropolis 2.'] },
+      { label: 'Blockbuster', img: 'assets/cat_blockbuster.png', films: ['Avatar', 'Bad Boys 4.', 'Barbie', 'Baywatch', 'Dűne 1-2.', 'Gyűrűk ura', 'Jurassic World', 'Halálos iramban', 'Harry Potter', 'Marvel filmek', 'Mission Impossible', 'Star Wars', 'Top Gun: Maverick', 'Transformers', 'Oppenheimer', 'Uncharted', 'F1', 'Anakonda', 'Legénybúcsú', 'Szenvedélyes nők'] },
+      { label: 'Klasszikusok', img: 'assets/cat_klasszikus.png', films: ['Cápa', 'Cinema Paradiso', 'Dirty Dancing', 'E.T.', 'Indiana Jones', 'Ponyvaregény', 'Star Wars', 'Terminátor', 'Vissza a jövőbe', 'Volt egyszer egy vadnyugat'] }
     ];
     const active = this.state.activeCat;
     const catTabs = cats.map((c, i) =>
@@ -314,17 +327,24 @@ class Component extends DCLogic {
         color: i === active ? '#2a1020' : 'rgba(255,255,255,.7)',
         transition: 'all .15s'
       } }, c.label));
+    const catGallery = React.createElement('div', { style: {
+        position: 'relative', borderRadius: '16px', overflow: 'hidden',
+        border: '1px solid rgba(255,255,255,.08)', boxShadow: '0 24px 60px rgba(0,0,0,.5)',
+        background: '#1a1d33'
+      } },
+      React.createElement('img', { key: active, src: cats[active].img, style: { width: '100%', display: 'block' } })
+    );
     const catFilms = cats[active].films.map((f, i) =>
       React.createElement('span', { key: f + i, style: {
-        padding: '10px 18px', borderRadius: '100px', fontSize: '14px', fontWeight: 500,
-        color: 'rgba(255,255,255,.85)', background: 'rgba(255,255,255,.05)',
+        padding: '8px 16px', borderRadius: '100px', fontSize: '13.5px', fontWeight: 500,
+        color: 'rgba(255,255,255,.8)', background: 'rgba(255,255,255,.05)',
         border: '1px solid rgba(255,255,255,.1)'
       } }, f));
 
     return {
       stars: this.makeStars(70, 7), stars2: this.makeStars(50, 13),
-      eventTags, photos, techList, decorList,
-      packages, festivalSpecs, catTabs, catFilms
+      eventTags: null, photos, techList, decorList,
+      packages, festivalSpecs, catTabs, catGallery, catFilms
     };
   }
 }

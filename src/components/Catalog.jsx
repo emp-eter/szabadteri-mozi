@@ -3,6 +3,7 @@ import { cats } from '../data.js'
 
 export default function Catalog() {
   const [activeCat, setActiveCat] = useState(0)
+  const active = cats[activeCat]
 
   return (
     <section className="catalog" data-screen-label="Filmkatalógus">
@@ -26,8 +27,12 @@ export default function Catalog() {
           ))}
         </div>
 
+        <div className="catalog__gallery">
+          <img src={active.img} alt={`${active.label} – filmposzterek`} />
+        </div>
+
         <div className="catalog__films">
-          {cats[activeCat].films.map((f) => (
+          {active.films.map((f) => (
             <span key={f} className="film-chip">
               {f}
             </span>

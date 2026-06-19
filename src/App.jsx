@@ -1,5 +1,6 @@
 import Hero from './components/Hero.jsx'
 import Intro from './components/Intro.jsx'
+import References from './components/References.jsx'
 import WhatsIncluded from './components/WhatsIncluded.jsx'
 import Packages from './components/Packages.jsx'
 import Catalog from './components/Catalog.jsx'
@@ -10,6 +11,7 @@ export default function App() {
     <div className="page">
       <Hero />
       <Intro />
+      <References />
       <WhatsIncluded />
       <Packages />
       <Catalog />

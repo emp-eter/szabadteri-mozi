@@ -1,5 +1,3 @@
-import { photos } from '../data.js'
-
 export default function Intro() {
   return (
     <section className="intro" data-screen-label="Bemutatkozás">
@@ -16,19 +14,6 @@ export default function Intro() {
         <p className="intro__closer">
           Önnek csak fogadni kell a vendégeket — a többi a mi dolgunk.
         </p>
-      </div>
-
-      <div className="gallery">
-        {photos.map((p) => (
-          <div
-            key={p.cap}
-            className="polaroid"
-            style={{ transform: `rotate(${p.rot}deg)` }}
-          >
-            <img src={p.src} alt={p.cap} />
-            <div className="polaroid__cap">{p.cap}</div>
-          </div>
-        ))}
       </div>
     </section>
   )

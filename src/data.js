@@ -1,15 +1,29 @@
-import photo1 from './assets/photo1.png'
-import photo2 from './assets/photo2.png'
-import photo3 from './assets/photo3.png'
+import catZenes from './assets/cat_zenes.png'
+import catCsaladi from './assets/cat_csaladi.png'
+import catBlockbuster from './assets/cat_blockbuster.png'
+import catKlasszikus from './assets/cat_klasszikus.png'
 
-// Featured event tag pills (hero clapperboard card)
-export const eventTags = ['Kvíz', 'Fotófal', 'Dekoráció', 'Piknik']
+// Base-aware URL helper for assets served from /public (files added later).
+const pub = (p) => `${import.meta.env.BASE_URL}${p}`
 
-// Intro photo gallery (polaroid-style)
-export const photos = [
-  { src: photo1, cap: 'Belvárosi vetítés', rot: -2.5 },
-  { src: photo2, cap: 'Esti kertmozi', rot: 1.5 },
-  { src: photo3, cap: 'Vízparti élmény', rot: -1 },
+// Hero clapperboard — featured next screening
+export const featured = {
+  eyebrow: 'Következő vetítés',
+  title: ['Avatar:', 'Tűz és Hamu'],
+  date: 'Szeptember 15. · Szombat',
+  time: '20.00 óra · sötétedéskor',
+  free: ['A rendezvény', 'ingyenes!'],
+  tags: 'Kvíz · Fotófal · Dekoráció · Piknik',
+}
+
+// References gallery — "Hol jártunk már" (venue photos live in /public/venues)
+export const venues = [
+  { src: pub('venues/venue1.png'), cap: 'STRAND Fesztivál – Zamárdi', rot: -2 },
+  { src: pub('venues/venue2.png'), cap: 'Gyulai Várfürdő', rot: 1.5 },
+  { src: pub('venues/venue3.png'), cap: 'Bolyki Pincészet és Szőlőbirtok – Eger', rot: -1.2 },
+  { src: pub('venues/venue4.png'), cap: 'Települési eseményeken garantált a teltház', rot: 1.8 },
+  { src: pub('venues/venue5.png'), cap: 'Belvárosi környezetben is népszerű program', rot: -1.5 },
+  { src: pub('venues/venue6.png'), cap: 'Eszterházy kastély – Fertőd', rot: 1.2 },
 ]
 
 // "Mit tartalmaz?" — technical parameters list
@@ -98,10 +112,11 @@ export const festivalSpecs = [
   ['Személyzet', '4–5 fő'],
 ]
 
-// Film catalog categories
+// Film catalog categories (each has a pre-rendered poster gallery image)
 export const cats = [
   {
     label: 'Zenés filmek',
+    img: catZenes,
     films: [
       'A legnagyobb showman', 'Bohém Rapszódia', 'Chicago', 'Csillag születik',
       'Elvis', 'Flashdance', 'Grease', 'I wanna dance with somebody',
@@ -111,6 +126,7 @@ export const cats = [
   },
   {
     label: 'Családi filmek',
+    img: catCsaladi,
     films: [
       'A Super Mario film', 'Agymanók 2.', 'Az oroszlánkirály', 'Csizmás a kandúr',
       'Garfield', 'Gru 4.', 'Képzeletbeli barátok', 'Kis kedvencek titkos élete',
@@ -120,6 +136,7 @@ export const cats = [
   },
   {
     label: 'Blockbuster',
+    img: catBlockbuster,
     films: [
       'Avatar', 'Bad Boys 4.', 'Barbie', 'Baywatch', 'Dűne 1–2.', 'Gyűrűk ura',
       'Jurassic World', 'Halálos iramban', 'Harry Potter', 'Marvel filmek',
@@ -129,6 +146,7 @@ export const cats = [
   },
   {
     label: 'Klasszikusok',
+    img: catKlasszikus,
     films: [
       'Cápa', 'Cinema Paradiso', 'Dirty Dancing', 'E.T.', 'Indiana Jones',
       'Ponyvaregény', 'Star Wars', 'Terminátor', 'Vissza a jövőbe',

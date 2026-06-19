@@ -1,5 +1,5 @@
 import Starfield from './Starfield.jsx'
-import { eventTags } from '../data.js'
+import { featured } from '../data.js'
 
 export default function Hero() {
   return (
@@ -35,33 +35,45 @@ export default function Hero() {
         </div>
       </div>
 
+      {/* Featured screening — chalkboard clapperboard */}
       <div className="clap">
-        <div className="clap__box">
-          <div className="clap__stripes" />
-          <div className="clap__body">
-            <div className="clap__eyebrow">
-              <span>Következő vetítés</span>
-              <span className="clap__rule" />
+        <div className="clap__tilt">
+          {/* top clap stick (open, hinged at right) */}
+          <div className="clap__stick">
+            <div className="clap__stick-bar" />
+            <div className="clap__hinge" />
+          </div>
+
+          {/* chalk slate board */}
+          <div className="clap__board">
+            <div className="clap__row">
+              <span className="clap__eyebrow">{featured.eyebrow}</span>
+              <span className="clap__chalk-line" />
             </div>
-            <h2 className="clap__title">Avatar: Tűz és Hamu</h2>
+
+            <h2 className="clap__title">
+              {featured.title[0]}
+              <br />
+              {featured.title[1]}
+            </h2>
+
+            <div className="clap__chalk-line clap__chalk-line--full" />
+
             <div className="clap__meta">
-              <div className="meta-block">
-                <span className="meta-block__label">Időpont</span>
-                <span className="meta-block__value">Szeptember 15. · Szombat</span>
-                <span className="meta-block__sub">20:00 óra · sötétedéskor</span>
+              <div className="clap__when">
+                <span className="clap__date">{featured.date}</span>
+                <span className="clap__time">{featured.time}</span>
               </div>
-              <div className="meta-block">
-                <span className="meta-block__label">Belépés</span>
-                <span className="meta-block__free">Ingyenes!</span>
+              <div className="clap__free">
+                {featured.free[0]}
+                <br />
+                {featured.free[1]}
               </div>
             </div>
-            <div className="clap__tags">
-              {eventTags.map((t) => (
-                <span key={t} className="tag">
-                  {t}
-                </span>
-              ))}
-            </div>
+
+            <div className="clap__chalk-line clap__chalk-line--full" />
+
+            <div className="clap__tags">{featured.tags}</div>
           </div>
         </div>
       </div>
