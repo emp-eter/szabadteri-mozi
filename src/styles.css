@@ -724,58 +724,32 @@ body {
   background: var(--gold);
   color: var(--btn-text);
 }
-.catalog__stage {
+/* endless film-reel of category posters */
+.catalog__reel {
   position: relative;
-  max-width: 880px;
+  overflow: hidden;
   margin: 0 auto;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
 }
-.catalog__gallery {
-  position: relative;
-  aspect-ratio: 1071 / 1182;
-  border-radius: 16px;
+.catalog__track {
+  display: flex;
+  gap: 18px;
+  width: max-content;
+  will-change: transform;
+}
+.reel-frame {
+  flex: 0 0 auto;
+  height: clamp(280px, 50vw, 470px);
+  border-radius: 14px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.5);
   background: #1a1d33;
 }
-
-/* slideshow arrows */
-.catalog__arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 2;
-  width: 52px;
-  height: 52px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: 4px;
-  font-size: 34px;
-  line-height: 1;
-  color: #2a1020;
-  cursor: pointer;
-  background: rgba(246, 182, 46, 0.92);
-  border: none;
-  border-radius: 50%;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
-  transition: background 0.15s, transform 0.15s;
-}
-.catalog__arrow:hover {
-  background: var(--gold);
-  transform: translateY(-50%) scale(1.08);
-}
-.catalog__arrow:active {
-  transform: translateY(-50%) scale(0.96);
-}
-.catalog__arrow--prev { left: -10px; }
-.catalog__arrow--next { right: -10px; }
-.catalog__gallery img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
+.reel-frame img {
   height: 100%;
-  object-fit: cover;
+  width: auto;
   display: block;
 }
 .catalog__films {
@@ -924,11 +898,6 @@ body {
 
   /* what's-included cards a touch tighter */
   .card { padding: 26px 22px; }
-
-  /* slideshow arrows move inside and shrink */
-  .catalog__arrow { width: 42px; height: 42px; font-size: 27px; }
-  .catalog__arrow--prev { left: 6px; }
-  .catalog__arrow--next { right: 6px; }
 
   /* contact card fits narrow screens */
   .contact__card { padding: 24px 26px; }

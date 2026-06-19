@@ -1,34 +1,89 @@
-import { useState, useEffect, useCallback } from 'react'
-import { m, AnimatePresence, useReducedMotion } from 'framer-motion'
+import { useState, useRef, useLayoutEffect, useCallback } from 'react'
+import { m, useMotionValue, useAnimationFrame, useReducedMotion } from 'framer-motion'
 import { cats } from '../data.js'
 import { fadeUp, stagger, chip, viewport } from '../motion.js'
 
-const AUTOPLAY_MS = 5000
-const N = cats.length
-
-// Horizontal slide variants (direction-aware)
-const slide = {
-  enter: (dir) => ({ x: dir >= 0 ? '100%' : '-100%', opacity: 0.3 }),
-  center: { x: 0, opacity: 1 },
-  exit: (dir) => ({ x: dir >= 0 ? '-100%' : '100%', opacity: 0.3 }),
-}
+const GAP = 18 // must match .catalog__track gap in CSS
+const SET = cats.length
+const SECONDS_PER_ITEM = 8 // slow, continuous drift
 
 export default function Catalog() {
   const reduce = useReducedMotion()
-  const [[index, dir], setSlide] = useState([0, 0])
-  const [paused, setPaused] = useState(false)
-  const active = cats[index]
+  const x = useMotionValue(0)
 
-  const goTo = useCallback((target, d) => setSlide([(target + N) % N, d]), [])
-  const next = useCallback(() => setSlide(([i]) => [(i + 1) % N, 1]), [])
-  const prev = useCallback(() => setSlide(([i]) => [(i - 1 + N) % N, -1]), [])
+  const itemRef = useRef(null)
+  const containerRef = useRef(null)
+  const setWidthRef = useRef(0)
+  const itemFullRef = useRef(0)
+  const pausedRef = useRef(false)
+  const jumpRef = useRef(null)
+  const activeRef = useRef(0)
+  const [active, setActive] = useState(0)
 
-  // Auto-advance (paused on hover; disabled for reduced motion)
-  useEffect(() => {
-    if (reduce || paused) return undefined
-    const t = setTimeout(next, AUTOPLAY_MS)
-    return () => clearTimeout(t)
-  }, [index, paused, reduce, next])
+  // Measure one frame's width to drive the seamless wrap + tab jumps.
+  useLayoutEffect(() => {
+    const measure = () => {
+      const el = itemRef.current
+      if (!el) return
+      itemFullRef.current = el.offsetWidth + GAP
+      setWidthRef.current = itemFullRef.current * SET
+    }
+    measure()
+    const ro = new ResizeObserver(measure)
+    if (itemRef.current) ro.observe(itemRef.current)
+    return () => ro.disconnect()
+  }, [])
+
+  const jumpTo = useCallback(
+    (i) => {
+      const target = -(i * itemFullRef.current)
+      if (reduce) {
+        x.set(target)
+        activeRef.current = i
+        setActive(i)
+      } else {
+        jumpRef.current = target
+      }
+    },
+    [reduce, x],
+  )
+
+  useAnimationFrame((_t, delta) => {
+    const sw = setWidthRef.current
+    if (!sw) return
+    let nx = x.get()
+
+    const jt = jumpRef.current
+    if (jt != null) {
+      // ease toward the clicked category
+      nx += (jt - nx) * Math.min(1, delta / 220)
+      if (Math.abs(jt - nx) < 0.6) {
+        nx = jt
+        jumpRef.current = null
+      }
+    } else if (!pausedRef.current && !reduce) {
+      // continuous slow drift
+      nx -= (sw / (SECONDS_PER_ITEM * SET * 1000)) * delta
+    }
+
+    // seamless wrap into (-sw, 0]
+    if (nx <= -sw) nx += sw
+    else if (nx > 0) nx -= sw
+    x.set(nx)
+
+    // category nearest the centre drives the tabs + chips
+    const cw = containerRef.current ? containerRef.current.offsetWidth : 0
+    const iw = itemFullRef.current || 1
+    let centre = (-nx + cw / 2) % sw
+    if (centre < 0) centre += sw
+    const idx = Math.floor(centre / iw) % SET
+    if (idx !== activeRef.current) {
+      activeRef.current = idx
+      setActive(idx)
+    }
+  })
+
+  const items = [...cats, ...cats]
 
   return (
     <section className="catalog" data-screen-label="Filmkatalógus">
@@ -49,9 +104,9 @@ export default function Catalog() {
             <m.button
               key={c.label}
               type="button"
-              className={`cat-tab${i === index ? ' cat-tab--active' : ''}`}
-              onClick={() => goTo(i, i >= index ? 1 : -1)}
-              aria-pressed={i === index}
+              className={`cat-tab${i === active ? ' cat-tab--active' : ''}`}
+              onClick={() => jumpTo(i)}
+              aria-pressed={i === active}
               whileTap={{ scale: 0.94 }}
             >
               {c.label}
@@ -60,58 +115,38 @@ export default function Catalog() {
         </div>
 
         <div
-          className="catalog__stage"
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
+          className="catalog__reel"
+          ref={containerRef}
+          onMouseEnter={() => {
+            pausedRef.current = true
+          }}
+          onMouseLeave={() => {
+            pausedRef.current = false
+          }}
         >
-          <div className="catalog__gallery">
-            <AnimatePresence custom={dir} initial={false}>
-              <m.img
-                key={index}
-                custom={dir}
-                src={active.img}
-                alt={`${active.label} – filmposzterek`}
-                width={1071}
-                height={1182}
-                decoding="async"
-                variants={slide}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{
-                  x: { type: 'spring', stiffness: 300, damping: 32 },
-                  opacity: { duration: 0.25 },
-                }}
-              />
-            </AnimatePresence>
-          </div>
-
-          <button
-            type="button"
-            className="catalog__arrow catalog__arrow--prev"
-            onClick={prev}
-            aria-label="Előző kategória"
-          >
-            ‹
-          </button>
-          <button
-            type="button"
-            className="catalog__arrow catalog__arrow--next"
-            onClick={next}
-            aria-label="Következő kategória"
-          >
-            ›
-          </button>
+          <m.div className="catalog__track" style={{ x }}>
+            {items.map((c, i) => (
+              <div className="reel-frame" key={i} ref={i === 0 ? itemRef : null}>
+                <img
+                  src={c.img}
+                  alt={`${c.label} – filmposzterek`}
+                  width={1071}
+                  height={1182}
+                  decoding="async"
+                />
+              </div>
+            ))}
+          </m.div>
         </div>
 
         <m.div
           className="catalog__films"
-          key={index}
+          key={active}
           variants={stagger(0.03)}
           initial="hidden"
           animate="show"
         >
-          {active.films.map((f) => (
+          {cats[active].films.map((f) => (
             <m.span key={f} className="film-chip" variants={chip}>
               {f}
             </m.span>
