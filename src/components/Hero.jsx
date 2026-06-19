@@ -35,44 +35,48 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Featured screening — chalkboard clapperboard */}
+      {/* Featured screening — hand-drawn chalkboard clapperboard */}
       <div className="clap">
-        <div className="clap__tilt">
-          {/* top clap stick (open, hinged at right) */}
-          <div className="clap__stick">
-            <div className="clap__stick-bar" />
-            <div className="clap__hinge" />
-          </div>
+        {/* hand-drawn roughen filter (subtle wobble on the whole board) */}
+        <svg width="0" height="0" className="clap__filter" aria-hidden="true">
+          <filter id="clapRough" x="-50%" y="-50%" width="200%" height="200%">
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency="0.014"
+              numOctaves="2"
+              seed="4"
+              result="n"
+            />
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="4" />
+          </filter>
+        </svg>
 
-          {/* chalk slate board */}
-          <div className="clap__board">
-            <div className="clap__row">
-              <span className="clap__eyebrow">{featured.eyebrow}</span>
-              <span className="clap__chalk-line" />
-            </div>
+        <div className="clap__board">
+          <div className="clap__stripes" />
 
+          <div className="clap__body">
             <h2 className="clap__title">
               {featured.title[0]}
               <br />
               {featured.title[1]}
             </h2>
 
-            <div className="clap__chalk-line clap__chalk-line--full" />
+            <div className="clap__line clap__line--first" />
 
             <div className="clap__meta">
               <div className="clap__when">
                 <span className="clap__date">{featured.date}</span>
-                <span className="clap__time">{featured.time}</span>
+                <span className="clap__day">
+                  {featured.day} <span className="clap__time">{featured.time}</span>
+                </span>
               </div>
-              <div className="clap__free">
-                {featured.free[0]}
-                <br />
-                {featured.free[1]}
-              </div>
+              <div className="clap__vsep" />
+              <div className="clap__free">{featured.free}</div>
             </div>
 
-            <div className="clap__chalk-line clap__chalk-line--full" />
-
+            <div className="clap__line" />
+            <div className="clap__location">{featured.location}</div>
+            <div className="clap__line" />
             <div className="clap__tags">{featured.tags}</div>
           </div>
         </div>

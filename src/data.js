@@ -11,12 +11,13 @@ import venue6 from './assets/venue6.png'
 
 // Hero clapperboard — featured next screening
 export const featured = {
-  eyebrow: 'Következő vetítés',
   title: ['Avatar:', 'Tűz és Hamu'],
-  date: 'Szeptember 15. · Szombat',
-  time: '20.00 óra · sötétedéskor',
-  free: ['A rendezvény', 'ingyenes!'],
-  tags: 'Kvíz · Fotófal · Dekoráció · Piknik',
+  date: 'Szeptember 15.',
+  day: 'Szombat',
+  time: '20.00 óra',
+  free: 'A rendezvény ingyenes!',
+  location: 'Helyszín, pontos cím',
+  tags: 'Kvíz, Fotófal, Dekoráció, Piknik',
 }
 
 // References gallery — "Hol jártunk már"

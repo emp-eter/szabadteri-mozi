@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Permanent+Marker&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Poppins', sans-serif; }
+</style>
+</helmet>
+
+<div style="display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 56px; background: radial-gradient(120% 110% at 50% 0%, #7a1632 0%, #3a2747 55%, #181c30 100%);">
+
+  <!-- hand-drawn roughen filter -->
+  <svg width="0" height="0" style="position: absolute;" aria-hidden="true">
+    <filter id="clapRough" x="-50%" y="-50%" width="200%" height="200%"><feTurbulence type="fractalNoise" baseFrequency="0.014" numOctaves="2" seed="4" result="n"></feTurbulence><feDisplacementMap in="SourceGraphic" in2="n" scale="4"></feDisplacementMap></filter>
+  </svg>
+
+  <!-- ===== CLAPPERBOARD ===== -->
+  <div style="width: 420px; filter: url(#clapRough); transform: rotate(-3deg);">
+    <div style="position: relative; background: #18181d; border: 5px solid #f2ead4; border-radius: 14px; box-shadow: 6px 8px 0 rgba(0,0,0,.32);">
+
+      <!-- top clap stripe row -->
+      <div style="height: 40px; background: repeating-linear-gradient(108deg, #f2ead4 0 24px, #16161a 24px 48px); border-bottom: 5px solid #f2ead4; border-radius: 9px 9px 0 0;"></div>
+
+      <div style="padding: 18px 24px 22px;">
+        <div style="font-family: 'Luckiest Guy', cursive; font-size: 38px; line-height: .92; color: #f6b62e; -webkit-text-stroke: 2px #16161a; text-align: center; text-transform: uppercase;">Avatar:<br>Tűz és Hamu</div>
+
+        <div style="height: 4px; background: #f2ead4; border-radius: 4px; margin: 14px 0 12px;"></div>
+
+        <div style="display: flex; align-items: stretch; gap: 0;">
+          <div style="flex: 1.2; display: flex; flex-direction: column; gap: 3px; padding-right: 16px;">
+            <span style="font-family: 'Permanent Marker', cursive; font-size: 21px; color: #f2ead4; text-transform: uppercase; line-height: 1.05;">Szeptember 15.</span>
+            <span style="font-family: 'Permanent Marker', cursive; font-size: 17px; color: #f2ead4; text-transform: uppercase; line-height: 1.05;">Szombat <span style="font-size: 13px; color: rgba(242,234,212,.8);">20.00 óra</span></span>
+          </div>
+          <div style="width: 4px; background: #f2ead4; border-radius: 4px;"></div>
+          <div style="flex: 1; display: flex; align-items: center; justify-content: center; padding-left: 16px;">
+            <span style="font-family: 'Permanent Marker', cursive; font-size: 18px; color: #58c5e0; text-transform: uppercase; text-align: center; line-height: 1.05;">A rendezvény ingyenes!</span>
+          </div>
+        </div>
+
+        <div style="height: 4px; background: #f2ead4; border-radius: 4px; margin: 12px 0;"></div>
+        <div style="font-family: 'Permanent Marker', cursive; font-size: 21px; color: #f2ead4; text-transform: uppercase; text-align: center;">Helyszín, pontos cím</div>
+        <div style="height: 4px; background: #f2ead4; border-radius: 4px; margin: 12px 0;"></div>
+        <div style="font-family: 'Permanent Marker', cursive; font-size: 15px; color: #f6b62e; text-transform: uppercase; text-align: center;">Kvíz, Fotófal, Dekoráció, Piknik</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>
