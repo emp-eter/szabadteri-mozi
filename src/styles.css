@@ -84,7 +84,7 @@ body {
 
 .hero__title {
   font-family: 'Luckiest Guy', cursive;
-  font-size: clamp(56px, 11vw, 138px);
+  font-size: clamp(44px, 11.5vw, 138px);
   line-height: 0.92;
   color: var(--gold);
   -webkit-text-stroke: 2px var(--stroke-dark);
@@ -169,18 +169,18 @@ body {
 
 /* integrated top clap stripes */
 .clap__stripes {
-  height: 74px;
+  height: clamp(46px, 6vw, 74px);
   background: repeating-linear-gradient(108deg, var(--chalk) 0 42px, var(--clap-dark) 42px 84px);
   border-bottom: 9px solid var(--chalk);
   border-radius: 13px 13px 0 0;
 }
 
 .clap__body {
-  padding: 36px 48px 40px;
+  padding: clamp(20px, 3.8vw, 36px) clamp(20px, 4.6vw, 48px) clamp(22px, 4vw, 40px);
 }
 .clap__title {
   font-family: 'Luckiest Guy', cursive;
-  font-size: 74px;
+  font-size: clamp(34px, 8vw, 74px);
   line-height: 0.92;
   color: var(--gold);
   -webkit-text-stroke: 2px var(--clap-dark);
@@ -212,20 +212,20 @@ body {
 }
 .clap__date {
   font-family: 'Permanent Marker', cursive;
-  font-size: 38px;
+  font-size: clamp(22px, 4.4vw, 38px);
   color: var(--chalk);
   text-transform: uppercase;
   line-height: 1.05;
 }
 .clap__day {
   font-family: 'Permanent Marker', cursive;
-  font-size: 30px;
+  font-size: clamp(17px, 3.4vw, 30px);
   color: var(--chalk);
   text-transform: uppercase;
   line-height: 1.05;
 }
 .clap__time {
-  font-size: 22px;
+  font-size: clamp(13px, 2.4vw, 22px);
   color: rgba(242, 234, 212, 0.8);
 }
 .clap__vsep {
@@ -240,7 +240,7 @@ body {
   justify-content: center;
   padding-left: 30px;
   font-family: 'Permanent Marker', cursive;
-  font-size: 34px;
+  font-size: clamp(19px, 4vw, 34px);
   color: var(--cyan);
   text-transform: uppercase;
   text-align: center;
@@ -248,14 +248,14 @@ body {
 }
 .clap__location {
   font-family: 'Permanent Marker', cursive;
-  font-size: 38px;
+  font-size: clamp(22px, 4.4vw, 38px);
   color: var(--chalk);
   text-transform: uppercase;
   text-align: center;
 }
 .clap__tags {
   font-family: 'Permanent Marker', cursive;
-  font-size: 26px;
+  font-size: clamp(15px, 3vw, 26px);
   color: var(--gold);
   text-transform: uppercase;
   text-align: center;
@@ -724,10 +724,13 @@ body {
   background: var(--gold);
   color: var(--btn-text);
 }
-.catalog__gallery {
+.catalog__stage {
   position: relative;
   max-width: 880px;
   margin: 0 auto;
+}
+.catalog__gallery {
+  position: relative;
   aspect-ratio: 1071 / 1182;
   border-radius: 16px;
   overflow: hidden;
@@ -735,6 +738,38 @@ body {
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
   background: #1a1d33;
 }
+
+/* slideshow arrows */
+.catalog__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 4px;
+  font-size: 34px;
+  line-height: 1;
+  color: #2a1020;
+  cursor: pointer;
+  background: rgba(246, 182, 46, 0.92);
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  transition: background 0.15s, transform 0.15s;
+}
+.catalog__arrow:hover {
+  background: var(--gold);
+  transform: translateY(-50%) scale(1.08);
+}
+.catalog__arrow:active {
+  transform: translateY(-50%) scale(0.96);
+}
+.catalog__arrow--prev { left: -10px; }
+.catalog__arrow--next { right: -10px; }
 .catalog__gallery img {
   position: absolute;
   inset: 0;
@@ -868,10 +903,40 @@ body {
   .festival__offer { margin-top: 6px; }
 }
 
-@media (max-width: 540px) {
+@media (max-width: 600px) {
+  /* tighter section rhythm on phones */
+  .hero__inner { padding: 44px 22px 64px; }
+  .intro { padding: 64px 22px 52px; }
+  .references { padding: 22px 22px 60px; }
+  .included { padding: 60px 22px; }
+  .packages { padding: 60px 22px; }
+  .catalog { padding: 60px 22px; }
+  .contact { padding: 64px 22px; }
+  .section-head { margin-bottom: 36px; }
+
+  /* layout collapse */
   .packages__grid { grid-template-columns: 1fr; }
   .pkg__desc { min-height: 0; }
-  .references__grid { grid-template-columns: 1fr; max-width: 420px; }
+  .references__grid { grid-template-columns: 1fr; max-width: 380px; }
+
+  /* clapperboard */
+  .clap { padding: 0 14px 64px; }
+
+  /* what's-included cards a touch tighter */
+  .card { padding: 26px 22px; }
+
+  /* slideshow arrows move inside and shrink */
+  .catalog__arrow { width: 42px; height: 42px; font-size: 27px; }
+  .catalog__arrow--prev { left: 6px; }
+  .catalog__arrow--next { right: 6px; }
+
+  /* contact card fits narrow screens */
+  .contact__card { padding: 24px 26px; }
+}
+
+@media (max-width: 380px) {
+  .references__grid { max-width: 320px; }
+  .contact__card { padding: 20px 18px; }
 }
 
 /* ============================================================
